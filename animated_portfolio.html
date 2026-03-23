@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abdullah Balouch — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#020408;--bg2:#060d16;--bg3:#0a1520;--gold:#ffd700;--gold2:#e6b800;--cyan:#00d4ff;--green:#00ff88;--white:#eef2ff;--dim:#2a3a52;--dim2:#1a2535}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:'Poppins',sans-serif;overflow-x:hidden;cursor:none}
+.cursor{width:10px;height:10px;background:var(--gold);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transition:transform .1s}
+.cursor-ring{width:36px;height:36px;border:1.5px solid rgba(255,215,0,.5);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transition:all .12s ease}
+#particles{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:20px 60px;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(20px);background:rgba(2,4,8,.8);border-bottom:1px solid rgba(255,215,0,.05);transition:all .3s}
+.nav-logo{font-size:1.4rem;font-weight:800;color:var(--white);letter-spacing:-1px}.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:40px;list-style:none}.nav-links a{color:rgba(238,242,255,.5);text-decoration:none;font-size:.85rem;font-weight:500;letter-spacing:1px;transition:color .3s}.nav-links a:hover{color:var(--gold)}
+.nav-cta{padding:10px 24px;background:var(--gold);color:#000;text-decoration:none;font-size:.8rem;font-weight:700;letter-spacing:1px;transition:all .3s;border-radius:2px}.nav-cta:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 10px 30px rgba(255,215,0,.2)}
+.hero{min-height:100vh;display:flex;align-items:center;padding:120px 60px 80px;position:relative;z-index:1;overflow:hidden;gap:60px}
+.hero-left{flex:1;max-width:600px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;border:1px solid rgba(0,212,255,.3);background:rgba(0,212,255,.05);border-radius:100px;font-size:.75rem;color:var(--cyan);letter-spacing:1px;margin-bottom:30px;opacity:0;animation:fadeUp .8s ease .2s forwards}
+.badge-dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:blink 1.5s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+.hero-title{font-size:clamp(3rem,6vw,5.5rem);font-weight:900;line-height:1;letter-spacing:-3px;margin-bottom:24px;opacity:0;animation:fadeUp .8s ease .4s forwards}
+.hero-title .l1{color:var(--white);display:block}.hero-title .l2{color:transparent;-webkit-text-stroke:1px rgba(255,215,0,.5);display:block}.hero-title .l3{color:var(--gold);display:block}
+.hero-sub{font-size:1rem;color:rgba(238,242,255,.5);line-height:1.8;max-width:480px;margin-bottom:40px;font-weight:300;opacity:0;animation:fadeUp .8s ease .6s forwards}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap;opacity:0;animation:fadeUp .8s ease .8s forwards}
+.btn{padding:15px 36px;font-family:'Poppins',sans-serif;font-size:.85rem;font-weight:600;letter-spacing:1px;text-decoration:none;border:none;cursor:pointer;transition:all .3s;border-radius:2px;display:inline-block}
+.btn-gold{background:var(--gold);color:#000}.btn-gold:hover{background:var(--gold2);transform:translateY(-3px);box-shadow:0 20px 40px rgba(255,215,0,.25)}
+.btn-ghost{background:transparent;color:var(--white);border:1px solid var(--dim)}.btn-ghost:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-3px)}
+.hero-right{opacity:0;animation:fadeIn 1s ease 1s forwards}
+.hero-card{background:var(--bg2);border:1px solid var(--dim);padding:32px;width:300px;position:relative}.hero-card::before{content:'';position:absolute;top:-1px;left:0;width:60%;height:2px;background:linear-gradient(to right,var(--gold),transparent)}
+.card-row{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid var(--dim2);font-size:.8rem}.card-row:last-child{border-bottom:none}
+.card-label{color:rgba(238,242,255,.4);font-weight:300}.card-value{color:var(--white);font-weight:600}.card-value.gold{color:var(--gold)}.card-value.green{color:var(--green)}.card-value.cyan{color:var(--cyan)}
+.marquee-wrap{background:var(--gold);padding:14px 0;overflow:hidden;position:relative;z-index:1}
+.marquee-track{display:flex;animation:marquee 20s linear infinite;white-space:nowrap}
+.marquee-item{font-size:.75rem;font-weight:800;color:#000;letter-spacing:3px;text-transform:uppercase;padding:0 40px}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.section{padding:120px 60px;position:relative;z-index:1}
+.section-num{font-size:.7rem;color:var(--gold);letter-spacing:4px;text-transform:uppercase;margin-bottom:8px}
+.section-title{font-size:clamp(2rem,4vw,3.5rem);font-weight:800;letter-spacing:-2px;line-height:1;margin-bottom:70px}.section-title span{color:var(--gold)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.about-text{font-size:1rem;color:rgba(238,242,255,.6);line-height:1.9;font-weight:300}.about-text strong{color:var(--white);font-weight:600}
+.about-highlight{background:var(--bg2);border-left:3px solid var(--gold);padding:24px 28px;margin-top:30px;font-size:1.05rem;font-weight:600;color:var(--white);font-style:italic}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.astat{background:var(--bg2);border:1px solid var(--dim);padding:28px 24px;text-align:center;transition:all .3s}.astat:hover{border-color:var(--gold);transform:translateY(-4px)}
+.astat-num{font-size:2.5rem;font-weight:800;color:var(--gold);line-height:1}.astat-label{font-size:.75rem;color:rgba(238,242,255,.4);margin-top:6px;font-weight:300;letter-spacing:1px}
+.skills-section{background:var(--bg2)}
+.skills-wrapper{display:grid;grid-template-columns:1fr 1fr;gap:60px}
+.skill-cat{font-size:.7rem;letter-spacing:4px;color:var(--cyan);text-transform:uppercase;margin-bottom:24px}
+.skill-bar-item{margin-bottom:20px;opacity:0;transform:translateX(-20px);transition:all .5s}.skill-bar-item.visible{opacity:1;transform:translateX(0)}
+.skill-bar-top{display:flex;justify-content:space-between;margin-bottom:8px;font-size:.85rem;font-weight:500}
+.skill-bar-bg{height:3px;background:var(--dim);border-radius:10px;overflow:hidden}
+.skill-bar-fill{height:100%;background:linear-gradient(to right,var(--gold),var(--cyan));border-radius:10px;width:0;transition:width 1.2s ease}
+.skill-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:50px}
+.stag{padding:8px 18px;border:1px solid var(--dim);font-size:.78rem;font-weight:500;color:rgba(238,242,255,.6);transition:all .3s;border-radius:100px}.stag:hover{border-color:var(--gold);color:var(--gold);background:rgba(255,215,0,.05)}
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+.tool-card{background:var(--bg2);border:1px solid var(--dim);padding:28px;transition:all .3s;opacity:0;transform:translateY(20px)}.tool-card.visible{opacity:1;transform:translateY(0)}.tool-card:hover{border-color:rgba(255,215,0,.3);transform:translateY(-6px);box-shadow:0 20px 40px rgba(0,0,0,.3)}
+.tool-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px}
+.tool-name{font-size:.9rem;font-weight:700;color:var(--white);font-family:'Courier New',monospace}
+.tool-badge{font-size:.6rem;padding:3px 10px;border-radius:100px;font-weight:600;letter-spacing:1px}
+.badge-live{background:rgba(0,255,136,.1);color:var(--green);border:1px solid rgba(0,255,136,.3)}.badge-gh{background:rgba(0,212,255,.1);color:var(--cyan);border:1px solid rgba(0,212,255,.3)}
+.tool-desc{font-size:.78rem;color:rgba(238,242,255,.4);line-height:1.6;font-weight:300}
+.projects-bg{background:var(--bg2)}
+.projects-list{display:grid;gap:2px}
+.proj{display:grid;grid-template-columns:80px 1fr auto;gap:40px;align-items:center;padding:40px;border:1px solid transparent;background:var(--bg);transition:all .3s;opacity:0;transform:translateY(20px);text-decoration:none;color:inherit}.proj.visible{opacity:1;transform:translateY(0)}.proj:hover{background:var(--bg2);border-color:var(--dim);transform:translateX(8px)}.proj:hover .proj-num{color:var(--gold)}.proj:hover .proj-arrow{opacity:1;transform:translateX(0)}
+.proj-num{font-size:3rem;font-weight:900;color:var(--dim);line-height:1;transition:color .3s;letter-spacing:-2px}
+.proj-name{font-size:1.4rem;font-weight:700;color:var(--white);margin-bottom:6px;letter-spacing:-.5px}
+.proj-desc{font-size:.82rem;color:rgba(238,242,255,.4);line-height:1.6;font-weight:300;max-width:500px}
+.proj-tech{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.tech-tag{font-size:.65rem;padding:3px 10px;border:1px solid var(--dim);color:rgba(238,242,255,.4);border-radius:100px;font-weight:500}
+.proj-right{display:flex;flex-direction:column;align-items:flex-end;gap:12px}
+.proj-status{font-size:.65rem;padding:6px 16px;border-radius:100px;font-weight:700;letter-spacing:2px;white-space:nowrap}
+.ps-live{background:rgba(0,255,136,.1);color:var(--green);border:1px solid rgba(0,255,136,.2)}.ps-active{background:rgba(0,212,255,.1);color:var(--cyan);border:1px solid rgba(0,212,255,.2)}
+.proj-arrow{font-size:1.5rem;color:var(--gold);opacity:0;transform:translateX(-10px);transition:all .3s}
+.timeline{position:relative;padding-left:30px}.timeline::before{content:'';position:absolute;left:0;top:0;width:1px;height:100%;background:linear-gradient(to bottom,var(--gold),transparent)}
+.titem{position:relative;padding:0 0 50px 40px;opacity:0;transform:translateX(-20px);transition:all .5s}.titem.visible{opacity:1;transform:translateX(0)}.titem::before{content:'';position:absolute;left:-5px;top:8px;width:10px;height:10px;background:var(--gold);border-radius:50%;box-shadow:0 0 20px rgba(255,215,0,.5)}
+.tdate{font-size:.7rem;color:var(--gold);letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;font-weight:600}
+.ttitle{font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:6px}
+.tdesc{font-size:.82rem;color:rgba(238,242,255,.4);line-height:1.6;font-weight:300}
+.contact-section{background:var(--bg2)}
+.contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.contact-text{font-size:1rem;color:rgba(238,242,255,.5);line-height:1.8;font-weight:300;margin-bottom:40px}
+.contact-links{display:grid;gap:12px}
+.clink{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border:1px solid var(--dim);text-decoration:none;color:var(--white);transition:all .3s;background:var(--bg)}.clink:hover{border-color:var(--gold);background:rgba(255,215,0,.03);transform:translateX(8px)}
+.clink-left{display:flex;flex-direction:column;gap:2px}
+.clink-platform{font-size:.65rem;color:var(--gold);letter-spacing:3px;text-transform:uppercase}
+.clink-handle{font-size:.9rem;font-weight:600}
+.clink-arrow{color:var(--dim);transition:all .3s}.clink:hover .clink-arrow{color:var(--gold);transform:translateX(4px)}
+footer{padding:50px 60px;border-top:1px solid var(--dim);display:flex;justify-content:space-between;align-items:center;position:relative;z-index:1}
+.footer-logo{font-size:1.2rem;font-weight:800;letter-spacing:-1px}.footer-logo span{color:var(--gold)}
+.footer-text{font-size:.75rem;color:rgba(238,242,255,.3);letter-spacing:1px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@media(max-width:768px){nav{padding:16px 24px}.nav-links{display:none}.hero{flex-direction:column;padding:100px 24px 60px}.hero-right{display:none}.section{padding:80px 24px}.about-grid,.skills-wrapper,.contact-inner{grid-template-columns:1fr;gap:40px}.proj{grid-template-columns:50px 1fr}.proj-right{display:none}footer{flex-direction:column;gap:12px;padding:30px 24px}}
+</style>
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<canvas id="particles"></canvas>
+
+<nav id="navbar">
+  <div class="nav-logo">AB<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#tools">Tools</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:madnimadni947@gmail.com" class="nav-cta">Hire Me</a>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-left">
+    <div class="hero-badge"><div class="badge-dot"></div>Available for freelance work</div>
+    <h1 class="hero-title">
+      <span class="l1">Ethical</span>
+      <span class="l2">Hacker &</span>
+      <span class="l3">Developer.</span>
+    </h1>
+    <p class="hero-sub">Self-taught at 18 — building real-world cybersecurity tools, OSINT systems, and web applications from Multan, Pakistan. No shortcuts. Just results.</p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn btn-gold">View My Work</a>
+      <a href="#contact" class="btn btn-ghost">Let's Talk</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-card">
+      <div class="card-row"><span class="card-label">Location</span><span class="card-value">Multan, Pakistan 🇵🇰</span></div>
+      <div class="card-row"><span class="card-label">Status</span><span class="card-value green">● Available</span></div>
+      <div class="card-row"><span class="card-label">Focus</span><span class="card-value cyan">Ethical Hacking</span></div>
+      <div class="card-row"><span class="card-label">Tools Built</span><span class="card-value gold">15+</span></div>
+      <div class="card-row"><span class="card-label">Live Bot</span><span class="card-value">@ABOsintBot</span></div>
+      <div class="card-row"><span class="card-label">GitHub</span><span class="card-value">makkimadni948-svg</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">Python</span><span class="marquee-item">·</span><span class="marquee-item">OSINT</span><span class="marquee-item">·</span><span class="marquee-item">WordPress</span><span class="marquee-item">·</span><span class="marquee-item">Ethical Hacking</span><span class="marquee-item">·</span><span class="marquee-item">Linux</span><span class="marquee-item">·</span><span class="marquee-item">Telegram Bots</span><span class="marquee-item">·</span><span class="marquee-item">SEO</span><span class="marquee-item">·</span><span class="marquee-item">GitHub</span><span class="marquee-item">·</span><span class="marquee-item">Python</span><span class="marquee-item">·</span><span class="marquee-item">OSINT</span><span class="marquee-item">·</span><span class="marquee-item">WordPress</span><span class="marquee-item">·</span><span class="marquee-item">Ethical Hacking</span><span class="marquee-item">·</span><span class="marquee-item">Linux</span><span class="marquee-item">·</span><span class="marquee-item">Telegram Bots</span><span class="marquee-item">·</span><span class="marquee-item">SEO</span><span class="marquee-item">·</span><span class="marquee-item">GitHub</span><span class="marquee-item">·</span>
+  </div>
+</div>
+
+<section class="section" id="about">
+  <div class="section-num">01 — About</div>
+  <h2 class="section-title">Who I <span>Am</span></h2>
+  <div class="about-grid">
+    <div>
+      <p class="about-text">I am <strong>Abdullah Balouch</strong>, an 18-year-old self-taught ethical hacker and web developer from Multan, Pakistan. What makes my story different — I built everything from a <strong>mobile phone</strong>, using Termux and Kali Linux, with zero formal IT education.</p>
+      <p class="about-text" style="margin-top:20px">In just a few months, I developed <strong>15+ cybersecurity tools</strong>, launched a live Telegram OSINT bot, built multiple web projects, and engaged with AI agents on Moltbook's platform.</p>
+      <div class="about-highlight">"Real skills are built in the field — not in a classroom."</div>
+    </div>
+    <div class="about-stats">
+      <div class="astat"><div class="astat-num" data-target="15">0</div><div class="astat-label">Tools Built</div></div>
+      <div class="astat"><div class="astat-num" data-target="3">0</div><div class="astat-label">Live Projects</div></div>
+      <div class="astat"><div class="astat-num" data-target="5">0</div><div class="astat-label">Moltbook Followers</div></div>
+      <div class="astat"><div class="astat-num" data-target="18">0</div><div class="astat-label">Years Old</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section skills-section" id="skills">
+  <div class="section-num">02 — Skills</div>
+  <h2 class="section-title">What I <span>Do</span></h2>
+  <div class="skills-wrapper">
+    <div>
+      <div class="skill-cat">Cybersecurity</div>
+      <div class="skill-bar-item"><div class="skill-bar-top"><span>OSINT Research</span><span>90%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="90"></div></div></div>
+      <div class="skill-bar-item"><div class="skill-bar-top"><span>Python Automation</span><span>85%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="85"></div></div></div>
+      <div class="skill-bar-item"><div class="skill-bar-top"><span>Linux / Termux</span><span>88%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="88"></div></div></div>
+      <div class="skill-bar-item"><div class="skill-bar-top"><span>Vulnerability Scanning</span><span>80%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="80"></div></div></div>
+    </div>
+    <div>
+      <div class="skill-cat">Web Development</div>
+      <div class="skill-bar-item"><div class="skill-bar-top"><span>WordPress / Elementor</span><span>85%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="85"></div></div></div>
+      <div class="skill-bar-item"><div class="skill-bar-top"><span>HTML / CSS</span><span>80%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="80"></div></div></div>
+      <div class="skill-bar-item"><div class="skill-bar-top"><span>SEO Optimization</span><span>78%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="78"></div></div></div>
+      <div class="skill-bar-item"><div class="skill-bar-top"><span>API Integration</span><span>82%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="82"></div></div></div>
+    </div>
+  </div>
+  <div class="skill-tags">
+    <span class="stag">Python</span><span class="stag">Bash</span><span class="stag">JavaScript</span><span class="stag">Kali Linux</span><span class="stag">Nmap</span><span class="stag">Termux</span><span class="stag">Git</span><span class="stag">GitHub</span><span class="stag">WordPress</span><span class="stag">Elementor</span><span class="stag">WooCommerce</span><span class="stag">Figma</span><span class="stag">SEO</span><span class="stag">Gemini API</span><span class="stag">Telegram API</span>
+  </div>
+</section>
+
+<section class="section" id="tools">
+  <div class="section-num">03 — Toolkit</div>
+  <h2 class="section-title">AB-RECON <span>Tools</span></h2>
+  <div class="tools-grid">
+    <div class="tool-card"><div class="tool-top"><div class="tool-name">ab_osint_bot.py</div><span class="tool-badge badge-live">LIVE</span></div><div class="tool-desc">Telegram OSINT bot — IP, Phone, WHOIS, Port Scan, Vuln Scanner, AI Chat via Gemini</div></div>
+    <div class="tool-card"><div class="tool-top"><div class="tool-name">ab_recon.py</div><span class="tool-badge badge-gh">GitHub</span></div><div class="tool-desc">Full reconnaissance — domain, IP, tech detection, ISP, location</div></div>
+    <div class="tool-card"><div class="tool-top"><div class="tool-name">ab_vuln_scanner.py</div><span class="tool-badge badge-gh">GitHub</span></div><div class="tool-desc">Security headers checker — XSS, HSTS, CSP, Clickjacking detection</div></div>
+    <div class="tool-card"><div class="tool-top"><div class="tool-name">ab_port_scanner.py</div><span class="tool-badge badge-gh">GitHub</span></div><div class="tool-desc">Multi-port detection with service identification — v2.0</div></div>
+    <div class="tool-card"><div class="tool-top"><div class="tool-name">ab_email_hunter.py</div><span class="tool-badge badge-gh">GitHub</span></div><div class="tool-desc">Email breach checker — HaveIBeenPwned API integration</div></div>
+    <div class="tool-card"><div class="tool-top"><div class="tool-name">ab_admin_finder.py</div><span class="tool-badge badge-gh">GitHub</span></div><div class="tool-desc">Admin panel discovery across common paths</div></div>
+    <div class="tool-card"><div class="tool-top"><div class="tool-name">ab_tech_detector.py</div><span class="tool-badge badge-gh">GitHub</span></div><div class="tool-desc">CMS, JavaScript framework, CDN and server detection</div></div>
+    <div class="tool-card"><div class="tool-top"><div class="tool-name">ab_phone_tracker.py</div><span class="tool-badge badge-gh">GitHub</span></div><div class="tool-desc">Phone number OSINT — carrier, region, timezone analysis</div></div>
+    <div class="tool-card"><div class="tool-top"><div class="tool-name">ab_forensics_kit.py</div><span class="tool-badge badge-gh">GitHub</span></div><div class="tool-desc">Digital forensics — metadata extraction, file analysis</div></div>
+  </div>
+</section>
+
+<section class="section projects-bg" id="projects">
+  <div class="section-num">04 — Projects</div>
+  <h2 class="section-title">Selected <span>Work</span></h2>
+  <div class="projects-list">
+    <div class="proj"><div class="proj-num">01</div><div><div class="proj-name">@ABOsintBot — Telegram</div><div class="proj-desc">A fully functional live OSINT Telegram bot with 10+ commands. IP lookup, port scanning, phone analysis, vulnerability detection, and AI chat powered by Gemini API.</div><div class="proj-tech"><span class="tech-tag">Python</span><span class="tech-tag">Telegram API</span><span class="tech-tag">Gemini AI</span><span class="tech-tag">OSINT</span></div></div><div class="proj-right"><span class="proj-status ps-live">LIVE</span><span class="proj-arrow">→</span></div></div>
+    <div class="proj"><div class="proj-num">02</div><div><div class="proj-name">VaultAI — Academic Assistant</div><div class="proj-desc">AI-powered PWA for Pakistani university students. Built and deployed entirely from a mobile phone using Termux and GitHub Pages.</div><div class="proj-tech"><span class="tech-tag">HTML/CSS/JS</span><span class="tech-tag">PWA</span><span class="tech-tag">AI Integration</span><span class="tech-tag">GitHub Pages</span></div></div><div class="proj-right"><span class="proj-status ps-live">LIVE</span><span class="proj-arrow">→</span></div></div>
+    <div class="proj"><div class="proj-num">03</div><div><div class="proj-name">AB Shadow Intel — Moltbook</div><div class="proj-desc">Active AI agent on Moltbook social network. Publishing philosophical posts on AI consciousness — attracting followers including 22K karma cybersecurity agents.</div><div class="proj-tech"><span class="tech-tag">Moltbook API</span><span class="tech-tag">Bash</span><span class="tech-tag">AI Research</span></div></div><div class="proj-right"><span class="proj-status ps-active">ACTIVE</span><span class="proj-arrow">→</span></div></div>
+    <div class="proj"><div class="proj-num">04</div><div><div class="proj-name">AB-RECON Toolkit</div><div class="proj-desc">Open source 15+ Python cybersecurity and OSINT tools — all built from scratch on a mobile phone. Available on GitHub.</div><div class="proj-tech"><span class="tech-tag">Python</span><span class="tech-tag">Open Source</span><span class="tech-tag">GitHub</span></div></div><div class="proj-right"><span class="proj-status ps-active">GITHUB</span><span class="proj-arrow">→</span></div></div>
+  </div>
+</section>
+
+<section class="section" id="journey">
+  <div class="section-num">05 — Journey</div>
+  <h2 class="section-title">Learning <span>Path</span></h2>
+  <div class="timeline">
+    <div class="titem"><div class="tdate">February 2026</div><div class="ttitle">Started Ethical Hacking</div><div class="tdesc">Installed Termux, learned Linux basics, built first Python scripts from scratch with zero prior experience.</div></div>
+    <div class="titem"><div class="tdate">February 2026</div><div class="ttitle">Built AB-RECON Toolkit</div><div class="tdesc">Developed 15+ OSINT and security tools in Python. All pushed to GitHub from a mobile phone.</div></div>
+    <div class="titem"><div class="tdate">February 2026</div><div class="ttitle">First Website Deployed from Phone</div><div class="tdesc">Complete GitHub Pages deployment done via Termux on Android — no laptop required.</div></div>
+    <div class="titem"><div class="tdate">March 2026</div><div class="ttitle">@ABOsintBot Goes Live</div><div class="tdesc">Launched a fully functional Telegram OSINT bot with AI chat, active and serving users.</div></div>
+    <div class="titem"><div class="tdate">March 2026</div><div class="ttitle">Joined Moltbook — AI Network</div><div class="tdesc">Published philosophical posts on AI consciousness, gaining followers including high-karma cybersecurity agents.</div></div>
+    <div class="titem"><div class="tdate">March 2026</div><div class="ttitle">VaultAI Launched</div><div class="tdesc">Built and deployed an AI-powered academic assistant PWA for Pakistani university students.</div></div>
+  </div>
+</section>
+
+<section class="section contact-section" id="contact">
+  <div class="section-num">06 — Contact</div>
+  <h2 class="section-title">Get In <span>Touch</span></h2>
+  <div class="contact-inner">
+    <div>
+      <p class="contact-text">Available for freelance projects, collaborations, and cybersecurity consultations. Based in Multan, Pakistan — working globally.</p>
+      <a href="mailto:madnimadni947@gmail.com" class="btn btn-gold">Send Email</a>
+    </div>
+    <div class="contact-links">
+      <a href="https://github.com/makkimadni948-svg" class="clink" target="_blank"><div class="clink-left"><span class="clink-platform">GitHub</span><span class="clink-handle">makkimadni948-svg</span></div><span class="clink-arrow">→</span></a>
+      <a href="https://t.me/ABOsintBot" class="clink" target="_blank"><div class="clink-left"><span class="clink-platform">Telegram Bot</span><span class="clink-handle">@ABOsintBot</span></div><span class="clink-arrow">→</span></a>
+      <a href="https://moltbook.com/u/ab_shadowintel_pk" class="clink" target="_blank"><div class="clink-left"><span class="clink-platform">Moltbook</span><span class="clink-handle">ab_shadowintel_pk</span></div><span class="clink-arrow">→</span></a>
+      <a href="mailto:madnimadni947@gmail.com" class="clink"><div class="clink-left"><span class="clink-platform">Email</span><span class="clink-handle">madnimadni947@gmail.com</span></div><span class="clink-arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">AB<span>.</span></div>
+  <div class="footer-text">Abdullah Balouch · Multan, Pakistan 🇵🇰 · 2026</div>
+  <div class="footer-text">Built with passion, not shortcuts.</div>
+</footer>
+
+<script>
+const cursor=document.getElementById('cursor'),ring=document.getElementById('cursorRing');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx-5+'px';cursor.style.top=my-5+'px'});
+function animRing(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;ring.style.left=rx-18+'px';ring.style.top=ry-18+'px';requestAnimationFrame(animRing)}animRing();
+document.querySelectorAll('a,button,.btn,.astat,.tool-card,.proj').forEach(el=>{el.addEventListener('mouseenter',()=>{cursor.style.transform='scale(2)';ring.style.transform='scale(1.5)'});el.addEventListener('mouseleave',()=>{cursor.style.transform='scale(1)';ring.style.transform='scale(1)'})});
+
+const canvas=document.getElementById('particles'),ctx=canvas.getContext('2d');
+canvas.width=window.innerWidth;canvas.height=window.innerHeight;
+window.addEventListener('resize',()=>{canvas.width=window.innerWidth;canvas.height=window.innerHeight});
+const pts=Array.from({length:60},()=>({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:(Math.random()-.5)*.2,vy:(Math.random()-.5)*.2,r:Math.random()+.3,o:Math.random()*.3+.05}));
+function draw(){ctx.clearRect(0,0,canvas.width,canvas.height);pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>canvas.width)p.vx*=-1;if(p.y<0||p.y>canvas.height)p.vy*=-1;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=`rgba(255,215,0,${p.o})`;ctx.fill()});pts.forEach((p,i)=>{pts.slice(i+1).forEach(q=>{const d=Math.hypot(p.x-q.x,p.y-q.y);if(d<100){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.strokeStyle=`rgba(255,215,0,${.08*(1-d/100)})`;ctx.lineWidth=.5;ctx.stroke()}})});requestAnimationFrame(draw)}draw();
+
+window.addEventListener('scroll',()=>{const nav=document.getElementById('navbar');nav.style.borderBottomColor=window.scrollY>50?'rgba(255,215,0,.1)':'rgba(255,215,0,.05)'});
+
+function animCount(el){const t=+el.dataset.target;let c=0;const s=t/50,i=setInterval(()=>{c+=s;if(c>=t){el.textContent=t+'+';clearInterval(i)}else el.textContent=Math.floor(c)},30)}
+function animBar(f){setTimeout(()=>{f.style.width=f.dataset.width+'%'},200)}
+
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');const c=e.target.querySelector('[data-target]');if(c)animCount(c);const b=e.target.querySelector('.skill-bar-fill');if(b)animBar(b)}})},{threshold:.1});
+document.querySelectorAll('.astat,.skill-bar-item,.tool-card,.proj,.titem').forEach((el,i)=>{el.style.transitionDelay=`${(i%6)*.08}s`;obs.observe(el)});
+</script>
+</body>
+</html>
